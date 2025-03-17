@@ -1,102 +1,100 @@
-import Image from "next/image";
+import { Home as HomeIcon, Search, Library, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="h-screen flex flex-col">
+      <div className="flex flex-1">
+        {/* Sidebar */}
+        <aside className="w-72 bg-neutral-950 p-6">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-600"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-600"></div>
+            <div className="w-3 h-3 rounded-full bg-green-600"></div>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          {/* Navegação */}
+          <nav className="space-y-4 mt-10">
+            <a href="#" className="flex items-center gap-2 text-sm font-semibold text-white hover:text-gray-400">
+              <HomeIcon size={20} />
+              Home
+            </a>
+            <a href="#" className="flex items-center gap-2 text-sm font-semibold text-white hover:text-gray-400">
+              <Search size={20} />
+              Search
+            </a>
+            <a href="#" className="flex items-center gap-2 text-sm font-semibold text-white hover:text-gray-400">
+              <Library size={20} />
+              Library
+            </a>
+          </nav>
+
+          {/* Playlists */}
+          <nav className="border-t border-gray-800 mt-10 pt-10 flex flex-col gap-2">
+            {[...Array(5)].map((_, index) => (
+              <a key={index} href="#" className="text-zinc-400 hover:text-zinc-200">
+                Playlist {index + 1}
+              </a>
+            ))}
+          </nav>
+        </aside>
+
+        {/* Conteúdo principal */}
+        <main className="flex-1 p-6">
+          <div className="flex items-center gap-3">
+            <button className="p-2 rounded-full bg-black/20 text-white hover:bg-black/40">
+              <ChevronLeft size={20} />
+            </button>
+            <button className="p-2 rounded-full bg-black/20 text-white hover:bg-black/40">
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          <h1 className="font-bold text-4xl mt-10 text-white">Good Afternoon</h1>
+
+          {/* Grid de imagens */}
+          <div className="grid grid-cols-3 gap-4 mt-6">
+            {[...Array(6)].map((_, index) => (
+              <a href="#" key={index} className="bg-white/10 group rounded-lg overflow-hidden flex items-center hover:bg-white/20 transition-all duration-200 hover:shadow-lg shadow-green-300">
+                <Image
+                  src="/BK_Gigantes.png"
+                  alt="BK Gigantes"
+                  width={80}
+                  height={80}
+                  className="w-24 h-24"
+                />
+                <span className="m-4 text-white font-medium">Gigantes</span>
+                <button className=" cursor-pointer w-12 h-12 flex items-center justify-center pl-1 rounded-full bg-green-400 text-black ml-auto mr-8 invisible group-hover:visible">
+                  <Play />
+                </button>
+              </a>
+            ))}
+          </div>
+
+          {/* Seção de recomendações */}
+          <div>
+            <h2 className="font-semibold text-2xl mt-10">Made for Gabriel Borges</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4 hover:text-zinc-100">
+              {[
+                { src: "/album01.jpg", title: "Daily Mix" },
+                { src: "/album02.jpg", title: "Lançamentos" },
+                { src: "/album03.jpg", title: "Ouça BK" },
+                { src: "/album04.jpg", title: "BK, VND, Pumapjl" },
+                { src: "/album05.jpg", title: "confira os destaques do mês" }
+              ].map((album, index) => (
+                <a key={index} href="#" className="bg-white/5 p-3 rounded hover:bg-white/10 transition-all duration-200 ">
+                  <Image className="w-full" src={album.src} width={104} height={104} alt={album.title} />
+                  <span className="text-zinc-400 font-medium mt-2 block  ">{album.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </main>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-neutral-800 border-t border-neutral-700 p-6 text-white text-center">
+        Desenvolvido por Gabriel Borges
       </footer>
     </div>
   );
